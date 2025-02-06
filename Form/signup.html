@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="center">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollabNest | Sign Up Page</title>
+    <link rel="icon" type="image/png" href="../Asset/icon.png">
+
+    <!-- font awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- css link -->
+    <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+    <div class="container center">
+        <div class="text_container center">
+            <img src="../Asset/logo.png" id="log_img">
+            <h1>Sign Up Page</h1>
+        </div>
+
+        <div class="main_container center">
+            <div class="side_container">
+                <img src="../Asset/side_fram.png" alt="sideImg">
+            </div>
+            <div class="form_container center">
+                <div class="btn_container">
+                    <button class="btn_max" data-set="guest">Guest</button>
+                    <button class="btn_max" data-set="versity">Versity</button>
+                </div>
+                <div class="context_container center">
+                    <form id="versity" class="center" data-set="versity">
+                        <div class="area_current">
+                            <label for="reg">Reg No :</label>
+                            <input placeholder="Board Register Number" id="reg" type="number" name="regNumber">
+                        </div>
+
+                        <div class="area_current">
+                            <label for="board">Board Name :</label>
+                            <select name="board" id="board">
+                                <option value="dhaka">Dhaka</option>
+                                <option value="barisal">Barisal</option>
+                                <option value="chittagong">Chittagong</option>
+                                <option value="comilla">Comilla</option>
+                                <option value="dinajpur">Dinajpur</option>
+                            </select>
+                        </div>
+
+                        <div class="area_current">
+                            <label for="mail">E-Mail :</label>
+                            <input placeholder="Enter your mail address" id="mail" name="email">
+                        </div>
+
+                        <div class="area_current">
+                            <label for="versityName">Versity Name :</label>
+                            <select name="versityName" id="versityName">
+                                <option value="NITER">NITER</option>
+                                <option value="MEC">MEC</option>
+                                <option value="FEC">FEC</option>
+                                <option value="STEC">STEC</option>
+                            </select>
+                        </div>
+
+                        <div class="area_current">
+                            <label for="designation">Designation :</label>
+                            <select name="designation" id="designation">
+                                <option value="teacher">Teacher</option>
+                                <option value="student">Student</option>
+                            </select>
+                        </div>
+
+                        <div class="area_current">
+                            <label for="versity_id">Versity ID :</label>
+                            <input placeholder="CS 22*****" id="versity_id" name="versityId">
+                        </div>
+
+                        <div class="area_current button center">
+                            <button class="btn">Sign Up <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+                        </div>
+                    </form>
+
+                    <form id="guest" class="center" data-set="guest">
+                        <div class="area_current">
+                            <label for="reg">Reg No :</label>
+                            <input placeholder="Board Register Number" id="reg" type="number" name="regNumber">
+                        </div>
+
+                        <div class="area_current">
+                            <label for="board">Board Name :</label>
+                            <select name="board" id="board">
+                                <option value="dhaka">Dhaka</option>
+                                <option value="barisal">Barisal</option>
+                                <option value="chittagong">Chittagong</option>
+                                <option value="comilla">Comilla</option>
+                                <option value="dinajpur">Dinajpur</option>
+                            </select>
+                        </div>
+
+                        <div class="area_current">
+                            <label for="mail">E-Mail :</label>
+                            <input placeholder="Enter your mail address" id="pass" name="email">
+                        </div>
+
+                        <div class="area_current button center">
+                            <button class="btn">Sign Up <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_container">
+            <p>If you already have an account. Please <a href="login.html">Log In</a> Now</p>
+        </div>
+    </div>
+
+
+    <script src="selectedForm.js"></script>
+</body>
+
+</html>

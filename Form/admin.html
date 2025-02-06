@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="center">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollabNest | Admin Page</title>
+
+    <!-- sweetalert2 script link -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- web icon image link -->
+    <link rel="icon" type="image/png" href="../Asset/icon.png">
+
+    <!-- font awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- css link -->
+    <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+    <!-- security conformation -->
+    <script>
+        let correctPass = 1234;
+        let inputPass;
+
+        while (true) {
+            inputPass = prompt('Input admin security code');
+
+            if (inputPass == null) {
+                alert("Process canceled.");
+                window.location.href = '/Form/login.html';
+                break;
+            }
+
+            if (parseInt(inputPass) === correctPass) {
+                Swal.fire({
+                    title: "Successful",
+                    text: "Welcome admin",
+                    icon: "success"
+                });
+                break;
+            } else {
+                alert('Incorrect Password')
+                window.location.href = '/Form/login.html';
+                break;
+            }
+        }
+    </script>
+
+    <div class="container center">
+        <div class="text_container center">
+            <img src="../Asset/logo.png" id="log_img">
+            <h1>Admin Log In Page</h1>
+        </div>
+
+        <div class="main_container center">
+            <div class="side_container">
+                <img src="../Asset/side_fram.png" alt="sideImg">
+            </div>
+            <div class="form_container center">
+                <div class="context_container center">
+
+                    <!-- admin form -->
+                    <form id="admin" class="center">
+                        <div class="area_current">
+                            <label for="admin_name">Admin Name</label>
+                            <input placeholder="Enter The Admin Name" id="admin_name" type="text">
+                        </div>
+
+                        <div class="area_current pass_input">
+                            <label for="pass">Password </label>
+                            <input placeholder="Enter The Admin Password" id="pass">
+                        </div>
+                        <div class="area_current button center">
+                            <button class="btn">Log In <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

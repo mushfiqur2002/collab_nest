@@ -33,7 +33,7 @@
                     <button class="btn_max" data-set="versity">Versity</button>
                 </div>
                 <div class="context_container center">
-                    <form id="versity" class="center" data-set="versity">
+                    <form id="versity" class="center" data-set="versity" data-type="signup">
                         <div class="area_current">
                             <label for="reg">Reg No :</label>
                             <input placeholder="Board Register Number" id="reg" type="number" name="regNumber">
@@ -83,7 +83,7 @@
                         </div>
                     </form>
 
-                    <form id="guest" class="center" data-set="guest">
+                    <form id="guest" class="center" data-set="guest" data-type="signup">
                         <div class="area_current">
                             <label for="reg">Reg No :</label>
                             <input placeholder="Board Register Number" id="reg" type="number" name="regNumber">
@@ -102,7 +102,12 @@
 
                         <div class="area_current">
                             <label for="mail">E-Mail :</label>
-                            <input placeholder="Enter your mail address" id="pass" name="email">
+                            <input placeholder="Enter your mail address" id="email" name="email">
+                        </div>
+
+                        <div class="area_current">
+                            <label for="mail">Password :</label>
+                            <input placeholder="Enter your password" id="pass" name="pass">
                         </div>
 
                         <div class="area_current button center">
@@ -120,6 +125,7 @@
 
 
     <script src="selectedForm.js"></script>
+    <script src="submitForm.js" type="module"></script>
 </body>
 
 </html>

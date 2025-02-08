@@ -35,7 +35,7 @@
                 <div class="context_container center">
 
                     <!-- form for guest -->
-                    <form id="guest" class="center" data-set="guest">
+                    <form id="guest" class="center" data-set="guest" data-type="login">
                         <div class="area_current">
                             <label for="reg">Reg No :</label>
                             <input placeholder="Board Register Number" id="reg" type="number" name="regNumber">
@@ -50,6 +50,10 @@
                                 <option value="dinajpur">Dinajpur</option>
                             </select>
                         </div>
+                        <div class="area_current">
+                            <label for="mail">E-Mail :</label>
+                            <input placeholder="Enter your mail address" id="email" name="email">
+                        </div>
                         <div class="area_current pass_input">
                             <label for="pass">Password :</label>
                             <input placeholder="Provide PIN" id="pass" name="password">
@@ -60,7 +64,7 @@
                     </form>
 
                     <!-- form for versity -->
-                    <form id="versity" class="center" data-set="versity">
+                    <form id="versity" class="center" data-set="versity" data-type="login">
                         <div class="area_current">
                             <label for="reg">Reg No :</label>
                             <input placeholder="Board Register Number" id="reg" type="number" name="regNumber">
@@ -105,7 +109,8 @@
 
 
     <script src="selectedForm.js"></script>
-    <script src="login.js"></script>
+    <script src="submitForm.js" type="module"></script>
+    <script src="./../fetchStudent.js"></script>
 </body>
 
 </html>

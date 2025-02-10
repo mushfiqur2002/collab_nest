@@ -1,4 +1,5 @@
 // import { notification } from "./../index.html";
+import { array } from "../fetchStudent.js";
 
 let sumbitForms = document.querySelectorAll('form');
 
@@ -41,24 +42,54 @@ async function fetchAPI(url, data) {
 // Guest Login
 function handleGuestLogin(data) {
     const newData = Object.fromEntries(data.entries());
-    const { regNumber, board, email, pass } = newData;
+console.log("Login Data Sent:", newData); // ✅ Check what data is sent
 
-    fetchAPI('http://localhost:3600/login', {
-        reg_id: parseInt(regNumber),
-        board_name: board,
-        email: email,
-        password: pass  // Make sure password is sent correctly
-    })
-        .then(result => {
-            if(result.success){
-                alert('Login successful');
-                window.location.href = './../index.html';
-            }else{
-                alert('Login failed: ' + result.error);
-            }
-        })
-        .catch(() => alert('Something went wrong'));
+const reg = parseInt(newData.regNumber);
+const email = newData.email;
+const pass = newData.password;
+const board_name = newData.board;
+
+const foundUser = array.some(user => 
+    user.reg_id == reg && 
+    user.board_name === board_name && 
+    user.email === email && 
+    user.password === pass
+);
+
+if (foundUser) {
+    alert('Login Successfully');
+
+    // Store reg_id in localStorage for session tracking
+    localStorage.setItem("loggedInUser", reg);
+
+    window.location.href = "./../index.html"; // Redirect to home
+} else {
+    alert('Incorrect credentials. Please try again.');
+    window.location.href = "login.html"; // Redirect back to login page
 }
+
+
+
+
+    // fetchAPI('http://localhost:3600/login', {
+    //     reg_id: parseInt(newData.regNumber),
+    //     board_name: newData.board,
+    //     email: newData.email,
+    //     password: newData.pass
+    // })
+    // .then(result => {
+    //     console.log("Login Response:", result); // ✅ Check the response
+    //     if (result.success) {
+    //         alert('Login successful');
+    //         window.location.href = './../index.html';
+    //     } else {
+    //         alert('Login failed: ' + result.error);
+    //     }
+    // })
+    // .catch(() => alert('Something went wrong'));
+}
+
+
 
 
 // Versity Login

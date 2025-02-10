@@ -28,6 +28,16 @@ export async function getDatas() {
     }
 }
 
+export async function getGuest() {
+    try {
+        const [datas] = await pool1.query("SELECT * FROM guest_user_information");
+        return datas;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+}
+
 // Check Guest User In student_information Table government_db Database
 export async function checkStudentExists(reg_id, board_name) {
     try {
@@ -40,15 +50,19 @@ export async function checkStudentExists(reg_id, board_name) {
 }
 
 // Check Guest User In guest_user_information Table collabNeast Database
-export async function checkGuestUserExists(reg_id, board_name, email) {
+export async function checkGuestUserExists(reg_id, board_name, email,password) {
     try {
-        const [rows] = await pool1.query("SELECT * FROM guest_user_information WHERE reg_id = ? AND board_name = ? AND email = ?", [reg_id, board_name, email]);
+        const [rows] = await pool1.query(
+            "SELECT * FROM guest_user_information WHERE reg_id = ? AND board_name = ? AND email = ? AND password = ?", 
+            [reg_id, board_name, email,password]
+        );
         return rows.length > 0;
     } catch (error) {
         console.error('Error checking guest user:', error);
         throw error;
     }
 }
+
 
 // Add Data In guest_user_information Table collabNeast Database
 export async function insertUser({ reg_id, board_name, email, password }) {
@@ -69,10 +83,12 @@ export async function verifyUser(reg_id, board_name, email, password) {
             "SELECT * FROM guest_user_information WHERE reg_id = ? AND board_name = ? AND email = ? AND password = ?",
             [reg_id, board_name, email, password]
         );
+        console.log('verify :',rows);
         return rows.length > 0;
     } catch (error) {
         console.error('Error verifying user:', error);
         throw error;
     }
 }
+
 

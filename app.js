@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { getDatas, checkStudentExists, checkGuestUserExists, insertUser, verifyUser } from './database.js';
+import { getDatas, getGuest, checkStudentExists, checkGuestUserExists, insertUser, verifyUser } from './database.js';
 
 const app = express();
 app.use(express.json());
@@ -9,6 +9,15 @@ app.use(cors());
 app.get('/datas', async (req, res) => {
     try {
         const datas = await getDatas();
+        res.json(datas);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get('/guest', async (req, res) => {
+    try {
+        const datas = await getGuest();
         res.json(datas);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -29,8 +38,10 @@ app.post('/checkStudent', async (req, res) => {
 
 app.post('/checkGuest', async (req, res) => {
     try {
-        const { reg_id, board_name } = req.body;
+        const { reg_id, board_name, email } = req.body; // Added email
+
         if (!reg_id) return res.status(400).json({ error: "Registration ID is required." });
+        if (!email) return res.status(400).json({ error: "Email is required." });
 
         const exists = await checkGuestUserExists(reg_id, board_name, email);
         res.json({ exists });
@@ -39,10 +50,11 @@ app.post('/checkGuest', async (req, res) => {
     }
 });
 
+
 app.post('/signup', async (req, res) => {
     try {
         const { reg_id, board_name, email, password } = req.body;
-        
+
         const exists = await checkStudentExists(reg_id, board_name);
         if (!exists) return res.status(400).json({ error: "Student not found in government database." });
 
@@ -58,6 +70,7 @@ app.post('/signup', async (req, res) => {
 
 app.post('/login', async (req, res) => {
     try {
+        console.log("Received login request:", req.body);
         const { reg_id, board_name, email, password } = req.body;
         const isValidUser = await verifyUser(reg_id, board_name, email, password);
 
